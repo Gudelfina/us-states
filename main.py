@@ -18,10 +18,7 @@ while len(correct_guess) != 50:
     answer_input = turtle.textinput(title=f"{len(correct_guess)}/50 ", prompt="What's another state name? ").title()
 
     if answer_input == "Exit":
-        missing_answers = []
-        for s in states:
-            if s not in correct_guess:
-                missing_answers.append(s)
+        missing_answers = [s for s in states if s not in correct_guess]
 
         states_to_learn = pandas.DataFrame(missing_answers)
         states_to_learn.to_csv("states_to_learn")
